@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
-import App from './App';
+import Root from './Root';
 import {
   Home,
   NotFound,
@@ -13,7 +13,7 @@ import {
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <Root />,
     errorElement: <NotFound />,
     children: [
       { path: '/', element: <Home />, index: true },

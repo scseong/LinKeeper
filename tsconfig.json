@@ -29,7 +29,7 @@
       "@hooks/*": ["src/hooks/*"],
       "@layouts/*": ["src/layouts/*"],
       "@pages/*": ["src/pages/*"],
-      "@shared/*": ["src/shared/*"],
+      "@shared/*": ["src/apis/*"],
       "@styles/*": ["src/styles/*"],
       "@types/*": ["src/types/*"]
     }

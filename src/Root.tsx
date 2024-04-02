@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 export default function Root() {
   return (
-    <LayoutContainer>
+    <StLayoutContainer>
       <Header />
       <Sidebar />
       <Main>
@@ -13,11 +13,11 @@ export default function Root() {
       </Main>
       <Footer />
       <GlobalStyle />
-    </LayoutContainer>
+    </StLayoutContainer>
   );
 }
 
-const LayoutContainer = styled.div`
+const StLayoutContainer = styled.div`
   margin: 0 auto;
   display: grid;
   grid-template-columns: var(--sidebar-width) auto;

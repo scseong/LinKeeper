@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   *{margin:0;padding:0;font:inherit;color:inherit;}
@@ -17,5 +17,15 @@ export const GlobalStyle = createGlobalStyle`
   --header-height: 56px;
   --footer-height: 56px;
   --layout-padding: 1rem;
+
+  --text-hover: #eee;
 }
+`;
+
+export const blindStyle = css`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 `;

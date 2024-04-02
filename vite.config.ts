@@ -19,6 +19,7 @@ export default defineConfig({
         find: '@components',
         replacement: resolve(__dirname, 'src/components'),
       },
+      { find: '@context', replacement: resolve(__dirname, 'src/context') },
       { find: '@hooks', replacement: resolve(__dirname, 'src/hooks') },
       { find: '@layouts', replacement: resolve(__dirname, 'src/layouts') },
       { find: '@pages', replacement: resolve(__dirname, 'src/pages') },

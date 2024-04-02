@@ -1,10 +1,36 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { IoSearchOutline, IoBookmarkOutline } from 'react-icons/io5';
 import { blindStyle } from '@styles/GlobalStyle';
 import LogoIcon from '@assets/logo.svg';
+import { login, logout, onUserStateChange } from '@apis/firebase';
+import { User } from 'firebase/auth';
 
 export default function Header() {
+  const [user, setUser] = useState<User | null>(null);
+
+  const handleLogin = async () => {
+    const user = await login();
+    if (user) {
+      setUser(user);
+    }
+  };
+
+  const handleLogout = async () => {
+    const user = await logout();
+    if (user === null) {
+      setUser(null);
+    }
+  };
+
+  useEffect(() => {
+    onUserStateChange((user) => {
+      console.log(user);
+      setUser(user);
+    });
+  }, []);
+
   return (
     <StHeader>
       <StWrapper>
@@ -24,7 +50,8 @@ export default function Header() {
             </Link>
           </div>
           <div className="profile">
-            <button aria-label="로그인">로그인</button>
+            {!user && <button onClick={handleLogin}>로그인</button>}
+            {user && <button onClick={handleLogout}>로그아웃</button>}
           </div>
         </StSubMenu>
       </StWrapper>

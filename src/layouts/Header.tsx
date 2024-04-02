@@ -5,9 +5,21 @@ import { blindStyle } from '@styles/GlobalStyle';
 import LogoIcon from '@assets/logo.svg';
 import Profile from '@components/profile/Profile';
 import { useAuthContext } from '@context/AuthContext';
+import { useToast } from '@hooks/useToast';
 
 export default function Header() {
   const { user, login, logout } = useAuthContext();
+  const { successTopRight } = useToast();
+
+  const handleLogin = async () => {
+    await login();
+    successTopRight({ message: '로그인 되었습니다.' });
+  };
+
+  const handleLogout = async () => {
+    await logout();
+    successTopRight({ message: '로그아웃 되었습니다.' });
+  };
 
   return (
     <StHeader>
@@ -28,9 +40,9 @@ export default function Header() {
             </Link>
           </div>
           <div>
-            {!user && <button onClick={login}>로그인</button>}
+            {!user && <button onClick={handleLogin}>로그인</button>}
             {user && <Profile {...user} />}
-            {user && <button onClick={logout}>로그아웃</button>}
+            {user && <button onClick={handleLogout}>로그아웃</button>}
           </div>
         </StSubMenu>
       </StWrapper>

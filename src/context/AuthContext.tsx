@@ -10,8 +10,8 @@ import {
 
 type AuthContextType = {
   user: User | null;
-  login: () => void;
-  logout: () => void;
+  login: () => Promise<void>;
+  logout: () => Promise<void>;
 };
 
 const AuthContext = createContext<AuthContextType | null>(null);

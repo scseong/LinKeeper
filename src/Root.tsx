@@ -6,6 +6,8 @@ import styled from 'styled-components';
 import { AuthContextProvider } from '@context/AuthContext';
 import { auth } from '@apis/firebase';
 import LoadingIndicator from '@components/common/LoadingIndicator';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Root() {
   const [isLoading, setLoading] = useState(true);
@@ -32,6 +34,7 @@ export default function Root() {
           <Outlet />
         </Main>
         <Footer />
+        <ToastContainer />
         <GlobalStyle />
       </AuthContextProvider>
     </StLayoutContainer>

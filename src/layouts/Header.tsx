@@ -1,35 +1,13 @@
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { IoSearchOutline, IoBookmarkOutline } from 'react-icons/io5';
 import { blindStyle } from '@styles/GlobalStyle';
 import LogoIcon from '@assets/logo.svg';
-import { login, logout, onUserStateChange } from '@apis/firebase';
-import { User } from 'firebase/auth';
 import Profile from '@components/profile/Profile';
+import { useAuthContext } from '@context/AuthContext';
 
 export default function Header() {
-  const [user, setUser] = useState<User | null>(null);
-
-  const handleLogin = async () => {
-    const user = await login();
-    if (user) {
-      setUser(user);
-    }
-  };
-
-  const handleLogout = async () => {
-    const user = await logout();
-    if (user === null) {
-      setUser(null);
-    }
-  };
-
-  useEffect(() => {
-    onUserStateChange((user) => {
-      setUser(user);
-    });
-  }, []);
+  const { user, login, logout } = useAuthContext();
 
   return (
     <StHeader>
@@ -41,7 +19,7 @@ export default function Header() {
           </Link>
         </StLogo>
         <StSubMenu>
-          <div className="icons">
+          <div>
             <button aria-label="검색창 열기">
               <IoSearchOutline />
             </button>
@@ -49,10 +27,10 @@ export default function Header() {
               <IoBookmarkOutline />
             </Link>
           </div>
-          <div className="profile">
-            {!user && <button onClick={handleLogin}>로그인</button>}
+          <div>
+            {!user && <button onClick={login}>로그인</button>}
             {user && <Profile {...user} />}
-            {user && <button onClick={handleLogout}>로그아웃</button>}
+            {user && <button onClick={logout}>로그아웃</button>}
           </div>
         </StSubMenu>
       </StWrapper>

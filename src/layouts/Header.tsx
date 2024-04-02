@@ -6,6 +6,7 @@ import { blindStyle } from '@styles/GlobalStyle';
 import LogoIcon from '@assets/logo.svg';
 import { login, logout, onUserStateChange } from '@apis/firebase';
 import { User } from 'firebase/auth';
+import Profile from '@components/profile/Profile';
 
 export default function Header() {
   const [user, setUser] = useState<User | null>(null);
@@ -26,7 +27,6 @@ export default function Header() {
 
   useEffect(() => {
     onUserStateChange((user) => {
-      console.log(user);
       setUser(user);
     });
   }, []);
@@ -51,6 +51,7 @@ export default function Header() {
           </div>
           <div className="profile">
             {!user && <button onClick={handleLogin}>로그인</button>}
+            {user && <Profile {...user} />}
             {user && <button onClick={handleLogout}>로그아웃</button>}
           </div>
         </StSubMenu>

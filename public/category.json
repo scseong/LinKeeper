@@ -1,0 +1,30 @@
+{
+  "category": [
+    {
+      "id": 1,
+      "name": "개발",
+      "slug": "develop",
+      "icon": "",
+      "children": [
+        {
+          "id": 10,
+          "name": "React",
+          "slug": "react"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "디자인",
+      "slug": "design",
+      "icon": "",
+      "children": [
+        {
+          "id": 20,
+          "name": "UI/UX",
+          "slug": "ui/ux"
+        }
+      ]
+    }
+  ]
+}

@@ -6,8 +6,8 @@ export default function Main({ children }: PropsWithChildren) {
 }
 
 const StMain = styled.main`
-  padding: 0 1rem var(--footer-height) 1rem;
+  padding: 0 1rem ${({ theme }) => theme.footerHeight} 1rem;
   grid-column: 2;
   grid-row: 2 / -1;
-  min-height: calc(100vh - var(--header-height));
+  min-height: calc(100vh - ${({ theme }) => theme.headerHeight});
 `;

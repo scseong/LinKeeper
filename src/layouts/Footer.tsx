@@ -8,6 +8,6 @@ const StFooter = styled.footer`
   grid-column: 2 / -1;
   grid-row: 3;
   width: 100%;
-  height: var(--footer-height);
+  height: ${({ theme }) => theme.footerHeight};
   background-color: #f8f9fa;
 `;

@@ -1,3 +1,6 @@
+import { useParams } from 'react-router-dom';
+
 export default function SubTopic() {
-  return <div>SubTopic</div>;
+  const { sub } = useParams();
+  return <div>{sub}</div>;
 }

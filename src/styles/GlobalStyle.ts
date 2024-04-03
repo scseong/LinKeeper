@@ -10,16 +10,6 @@ export const GlobalStyle = createGlobalStyle`
   menu, ol, li {list-style:none}
   a {text-decoration:none}
   table {border-collapse:collapse;border-spacing:0}
-
-:root {
-  --max-width: 1800px; 
-  --sidebar-width: 300px;
-  --header-height: 56px;
-  --footer-height: 56px;
-  --layout-padding: 1rem;
-
-  --text-hover: #eee;
-}
 `;
 
 export const blindStyle = css`

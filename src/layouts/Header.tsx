@@ -55,8 +55,8 @@ const StHeader = styled.header`
   grid-row: 1;
   position: fixed;
   width: 100%;
-  max-width: var(--max-width);
-  height: var(--header-height);
+  max-width: ${({ theme }) => theme.maxWidth};
+  height: ${({ theme }) => theme.headerHeight};
   background-color: #f8f9fa;
 `;
 
@@ -65,7 +65,7 @@ const StWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: var(--header-height);
+  height: ${({ theme }) => theme.headerHeight};
 `;
 
 const StLogo = styled.div`

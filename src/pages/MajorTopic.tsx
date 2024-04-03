@@ -1,3 +1,6 @@
+import { useParams } from 'react-router-dom';
+
 export default function MajorTopic() {
-  return <div>MajorTopic</div>;
+  const { major } = useParams();
+  return <div>{major}</div>;
 }

@@ -9,14 +9,12 @@ import {
 } from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: '***REMOVED***',
-  authDomain: '***REMOVED***',
-  databaseURL: '***REMOVED***',
-  projectId: '***REMOVED***',
-  storageBucket: '***REMOVED***.appspot.com',
-  messagingSenderId: '***REMOVED***',
-  appId: '1:***REMOVED***:web:94d39e329aa237d077505d',
-  measurementId: '***REMOVED***',
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGIN_ID,
+  appId: import.meta.env.VITE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);

@@ -5,11 +5,31 @@
       "name": "개발",
       "slug": "develop",
       "icon": "",
+      "order": 1,
       "children": [
         {
           "id": 10,
           "name": "React",
-          "slug": "react"
+          "slug": "react",
+          "icon": "",
+          "fullSlug": "develop/react",
+          "order": 1
+        },
+        {
+          "id": 11,
+          "name": "Vue.js",
+          "slug": "vuejs",
+          "icon": "",
+          "fullSlug": "develop/vuejs",
+          "order": 2
+        },
+        {
+          "id": 12,
+          "name": "Angular",
+          "slug": "angular",
+          "icon": "",
+          "fullSlug": "develop/angular",
+          "order": 3
         }
       ]
     },
@@ -22,7 +42,18 @@
         {
           "id": 20,
           "name": "UI/UX",
-          "slug": "ui/ux"
+          "slug": "ui/ux",
+          "icon": "",
+          "fullSlug": "design/ui/ux",
+          "order": 1
+        },
+        {
+          "id": 21,
+          "name": "일반 디자인",
+          "slug": "general-design",
+          "icon": "",
+          "fullSlug": "design/general-design",
+          "order": 2
         }
       ]
     }

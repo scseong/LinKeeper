@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import { Category } from '@typings/db';
 import { NavLink } from 'react-router-dom';
+import { Category } from 'src/typings/db';
 
 export default function Sidebar() {
-  const [categories, setCategories] = useState<Category[] | []>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
 
   useEffect(() => {
     async function getCategory() {
@@ -24,7 +24,7 @@ export default function Sidebar() {
         <ul>
           {categories.map((category) => (
             <li key={category.id}>
-              <StMajorNavLink to={`/topics/${category.name}`}>
+              <StMajorNavLink to={`/topics/${category.slug}`}>
                 <p>{category.name}</p>
               </StMajorNavLink>
               {category.children.length > 0 && (
@@ -32,8 +32,8 @@ export default function Sidebar() {
                   {category.children.map((child) => (
                     <li key={child.id}>
                       <StSubNavLink
-                        to={`topics/${category.name}/${encodeURIComponent(
-                          child.name
+                        to={`topics/${category.slug}/${encodeURIComponent(
+                          child.slug
                         )}`}
                       >
                         {child.name}
@@ -44,6 +44,11 @@ export default function Sidebar() {
               )}
             </li>
           ))}
+          <li>
+            <StMajorNavLink to="/topics/settings">
+              <p>설정</p>
+            </StMajorNavLink>
+          </li>
         </ul>
       </nav>
     </StSidebar>
@@ -63,7 +68,7 @@ const StSidebar = styled.aside`
 
 const StMajorNavLink = styled(NavLink)`
   margin-bottom: 3px;
-  padding: 7px 12px 7px 20px;
+  padding: 10px 12px 10px 20px;
   display: block;
   width: 100%;
   border-radius: 100px;
@@ -84,9 +89,11 @@ const StMajorNavLink = styled(NavLink)`
 `;
 
 const StSubNavLink = styled(NavLink)`
-  padding: 7px 12px 7px 48px;
+  padding: 6px 12px 6px 48px;
+  width: 100%;
+  display: block;
+  font-weight: 600;
   transition: all 100ms ease;
-  font-weight: bold;
 
   &.active {
     color: ${({ theme }) => theme.navTextActiveColor};

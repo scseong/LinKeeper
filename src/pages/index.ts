@@ -5,6 +5,7 @@ import Profile from './Profile';
 import SearchResults from './SearchResults';
 import NotFound from './NotFound';
 import Bookmark from './Bookmark';
+import Settings from './Settings';
 
 export {
   Home,
@@ -14,4 +15,5 @@ export {
   SearchResults,
   NotFound,
   Bookmark,
+  Settings,
 };

@@ -8,6 +8,7 @@ import {
   Bookmark,
   SearchResults,
   Profile,
+  Settings,
 } from './pages';
 
 export const router = createBrowserRouter([
@@ -17,6 +18,10 @@ export const router = createBrowserRouter([
     errorElement: <NotFound />,
     children: [
       { path: '/', element: <Home />, index: true },
+      {
+        path: '/topics/settings',
+        element: <Settings />,
+      },
       {
         path: '/topics/:major',
         element: <MajorTopic />,

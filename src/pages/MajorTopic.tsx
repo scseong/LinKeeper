@@ -1,6 +1,21 @@
-import { useParams } from 'react-router-dom';
+import { useCategories } from '@context/CategoryContext';
+import styled from 'styled-components';
 
 export default function MajorTopic() {
-  const { major } = useParams();
-  return <div>{major}</div>;
+  const { currentMajorCategory } = useCategories();
+
+  if (!currentMajorCategory) return null;
+
+  return (
+    <section>
+      <div>
+        <StMajorTitle>{currentMajorCategory!.name}</StMajorTitle>
+      </div>
+    </section>
+  );
 }
+
+const StMajorTitle = styled.h2`
+  font-size: 2rem;
+  line-height: 2.4rem;
+`;

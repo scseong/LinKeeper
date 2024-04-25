@@ -9,6 +9,7 @@ import LoadingIndicator from '@components/common/LoadingIndicator';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { theme } from '@styles/theme';
+import { CategoryContextProvider } from '@context/CategoryContext';
 
 export default function Root() {
   const [isLoading, setLoading] = useState(true);
@@ -27,20 +28,22 @@ export default function Root() {
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <StLayoutContainer>
-        <AuthContextProvider>
-          <Header />
-          <Sidebar />
-          <Main>
-            <Outlet />
-          </Main>
-          <Footer />
-          <ToastContainer />
-          <GlobalStyle />
-        </AuthContextProvider>
-      </StLayoutContainer>
-    </ThemeProvider>
+    <AuthContextProvider>
+      <CategoryContextProvider>
+        <ThemeProvider theme={theme}>
+          <StLayoutContainer>
+            <Header />
+            <Sidebar />
+            <Main>
+              <Outlet />
+            </Main>
+            <Footer />
+            <GlobalStyle />
+            <ToastContainer />
+          </StLayoutContainer>
+        </ThemeProvider>
+      </CategoryContextProvider>
+    </AuthContextProvider>
   );
 }
 

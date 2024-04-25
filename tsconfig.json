@@ -30,7 +30,7 @@
       "@hooks/*": ["src/hooks/*"],
       "@layouts/*": ["src/layouts/*"],
       "@pages/*": ["src/pages/*"],
-      "@shared/*": ["src/apis/*"],
+      "@shared/*": ["src/shared/*"],
       "@styles/*": ["src/styles/*"],
       "@typings/*": ["src/typings/*"]
     }

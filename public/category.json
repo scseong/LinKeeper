@@ -11,7 +11,7 @@
           "id": 10,
           "name": "React",
           "slug": "react",
-          "icon": "",
+          "icon": "https://skillicons.dev/icons?i=react",
           "fullSlug": "develop/react",
           "order": 1
         },
@@ -19,7 +19,7 @@
           "id": 11,
           "name": "Vue.js",
           "slug": "vuejs",
-          "icon": "",
+          "icon": "https://skillicons.dev/icons?i=vue",
           "fullSlug": "develop/vuejs",
           "order": 2
         },
@@ -27,7 +27,7 @@
           "id": 12,
           "name": "Angular",
           "slug": "angular",
-          "icon": "",
+          "icon": "https://skillicons.dev/icons?i=angular",
           "fullSlug": "develop/angular",
           "order": 3
         }

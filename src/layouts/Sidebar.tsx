@@ -1,22 +1,9 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { Category } from 'src/typings/db';
+import { useCategories } from '@context/CategoryContext';
 
 export default function Sidebar() {
-  const [categories, setCategories] = useState<Category[]>([]);
-
-  useEffect(() => {
-    async function getCategory() {
-      const result = await axios.get('/category.json');
-      setCategories(result.data.category);
-    }
-
-    getCategory();
-  }, []);
-
-  if (!categories) return null;
+  const { categories } = useCategories();
 
   return (
     <StSidebar>
@@ -57,13 +44,14 @@ export default function Sidebar() {
 
 const StSidebar = styled.aside`
   margin-top: ${({ theme }) => theme.headerHeight};
-  padding: 1rem;
+  padding: 2rem 1rem 1rem 1rem;
   grid-column: 1;
   grid-row: 2 / -1;
   position: fixed;
   width: ${({ theme }) => theme.sidebarWidth};
   height: calc(100vh - ${({ theme }) => theme.headerHeight});
   color: ${({ theme }) => theme.navTextColor};
+  user-select: none;
 `;
 
 const StMajorNavLink = styled(NavLink)`

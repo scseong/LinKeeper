@@ -7,7 +7,7 @@ import {
 } from 'react';
 import { useParams } from 'react-router-dom';
 import { Category, ChildCategory } from '@typings/db';
-import axios from 'axios';
+import { fetchCategories } from '@apis/categories';
 
 type CategoryContextType = {
   categories: Category[];
@@ -19,22 +19,16 @@ const CategoryContext = createContext<CategoryContextType | null>(null);
 
 export function CategoryContextProvider({ children }: PropsWithChildren) {
   const [categories, setCategories] = useState<Category[]>([]);
-  const { major, sub } = useParams();
-
-  const currentMajorCategory = categories.find(
-    (category) => category.slug === major
-  );
-  const currentSubCategory = currentMajorCategory?.children.find(
-    (category) => category.slug === sub
-  );
+  const { currentMajorCategory, currentSubCategory } =
+    useCategorySelection(categories);
 
   useEffect(() => {
-    async function getCategory() {
-      const result = await axios.get('/category.json');
-      setCategories(result.data.category);
+    async function getCategories() {
+      const categories = await fetchCategories('/category.json');
+      setCategories(categories);
     }
 
-    getCategory();
+    getCategories();
   }, []);
 
   return (
@@ -52,4 +46,23 @@ export const useCategories = () => {
     throw new Error('Cannot find CategoryProvider');
   }
   return context;
+};
+
+function findCategoryBySlug<T extends Category | ChildCategory>(
+  categories: T[],
+  slug?: string
+): T | undefined {
+  if (typeof slug === 'undefined') return;
+  return categories.find((category) => category.slug === slug);
+}
+
+const useCategorySelection = (categories: Category[]) => {
+  const { major, sub } = useParams();
+
+  const currentMajorCategory = findCategoryBySlug(categories, major);
+  const currentSubCategory = currentMajorCategory?.children
+    ? findCategoryBySlug(currentMajorCategory.children, sub)
+    : undefined;
+
+  return { currentMajorCategory, currentSubCategory };
 };

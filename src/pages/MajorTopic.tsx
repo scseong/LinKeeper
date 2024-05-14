@@ -1,5 +1,6 @@
 import { useCategories } from '@context/CategoryContext';
 import styled from 'styled-components';
+import CardContainer from '@components/article/CardContainer';
 
 export default function MajorTopic() {
   const { currentMajorCategory } = useCategories();
@@ -11,6 +12,7 @@ export default function MajorTopic() {
       <div>
         <StMajorTitle>{currentMajorCategory!.name}</StMajorTitle>
       </div>
+      <CardContainer />
     </section>
   );
 }

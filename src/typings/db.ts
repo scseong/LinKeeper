@@ -20,7 +20,7 @@ export type Article = {
   id: number;
   publishedAt: string;
   link: string;
-  categories: { id: number; name: string; slug: string }[];
+  categories: { id: number; name: string; slug: string; fullSlug: string }[];
   author: string;
   title: string;
   content: string;
